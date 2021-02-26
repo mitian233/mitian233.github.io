@@ -2,6 +2,7 @@
 title: about
 date: 2021-02-08 12:33:16
 type: about
+layout: about
 ---
 ## 音ゲープレイヤーについて
 ### 遊んでいるゲーム
