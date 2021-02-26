@@ -23,7 +23,10 @@ welcome_cover: /img/welcome-cover.jpg
 # 默认文章封面图（随机调用,支持外链）
 cover: 
   - /img/cover.jpg
-#  - /img/welcome-cover.jpg
+  - /img/cover1.jpg
+  - /img/cover2.jpg
+  - /img/cover3.jpg
+  - /img/cover4.jpg
 
  
 # 是否使用mathjax
@@ -36,7 +39,7 @@ scrollbar: true
 # 本地搜索,请将索引文件放在网站根目录,或修改主题js文件的path值
 local_search:
     # 是否启用
-    enable: false
+    enable: true
 
 # 是否显示 一言(hitokoto)
 hitokoto: true
@@ -56,26 +59,26 @@ beian:
     # 是否在主页面最底下显示备案信息(虽然丑，但是完全满足规定要求)
     enableFooter: false
     # 备案号
-    beianInfo: 冀ICP备xxxxxxx号
+    beianInfo:
     # 链接地址
     link: http://www.beian.miit.gov.cn
 
 # Gitalk 评论插件（https://github.com/gitalk/gitalk）
 gitalk:
     # 是否启用评论功能
-    enable: false
+    enable: true
     # 是否自动展开评论框
-    autoExpand: false
+    autoExpand: true
     # 应用编号
-    clientID: ''
+    clientID: 'b8bf73142affcec457b7'
     # 应用秘钥
-    clientSecret: ''
+    clientSecret: 'b99be501e394063eb5992422aeca3fe2a17bfacf'
     # issue仓库名
-    repo: ''
+    repo: 'GitalkDatabase'
     # Github名
-    owner: ''
+    owner: 'mitian233'
     # Github名
-    admin: ['']
+    admin: ['mitian233']
     # Ensure uniqueness and length less than 50
     id: location.pathname
     # Facebook-like distraction free mode

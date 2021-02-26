@@ -25,6 +25,7 @@
         &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %>.
         <span> | </span>Powered by <%- link_to("https://hexo.io/", "Hexo", {external: true})%>
         <span> | </span>Theme <%- link_to("https://github.com/Fechin/hexo-theme-diaspora", "Diaspora", {external: true})%> by Fechin
+		<span> | </span>本站部分贴图来自 <%- link_to("https://www.pixiv.net/", "Pixiv", {external: true})%> 如认为版权收到侵犯请联系作者删除
 		<% if (theme.beian.enable){ %>
 		<span> | </span><a rel="nofollow" href="<%=theme.beian.link%>" target="_blank"><%=theme.beian.beianInfo%></a>
 		<%}%>
