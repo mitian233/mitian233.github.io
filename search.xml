@@ -20,14 +20,14 @@
       </tags>
   </entry>
   <entry>
-    <title>StickerPackDownloader使用说明</title>
-    <url>/2021/02/28/StickerPackDownloader%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
+    <title>StickersPackDownloader使用说明</title>
+    <url>/2021/02/28/StickersPackDownloader%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这是一个用来下载某聊天工具贴纸包的工具</p>
 <p>之前在GitHub上开源<a href="https://github.com/mitian233/StickersPackDownloader" title="项目主页">该项目</a>的时候是拿英文写的<a href="https://github.com/mitian233/StickersPackDownloader/blob/master/readme.md" title="GitHub">Readme</a>，毕竟我自己英语也比较蹩脚，干脆就乘此机会用中文重写一遍吧。</p>
 <h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>用户在已安装Python环境的系统内</p>
 <ol>
 <li><p>克隆该存储库。（或者直接下载zip格式文件）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/mitian233/StickerPackDownloader.git</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/mitian233/StickersPackDownloader.git</span><br></pre></td></tr></table></figure></li>
 <li><p>程序使用第三方库<code>requests</code>，需要后期安装。</p>
  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install requests</span><br></pre></td></tr></table></figure></li>
 <li><p>使用你的Python IDE调试或者直接运行<code>.py</code>文件，按照控制台输出的提示输入相关信息即可完成下载。<br><img src="https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228212228.png" alt="screenshot"><br>下载的文件在同一目录下，名称为<code>stickers.zip</code></p>
