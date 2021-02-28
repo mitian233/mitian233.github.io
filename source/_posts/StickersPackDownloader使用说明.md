@@ -20,17 +20,20 @@ tags:
    ``` bash
    $ git clone https://github.com/mitian233/StickersPackDownloader.git
    ```
+
 2. 程序使用第三方库`requests`，需要后期安装。
     ``` bash
     $ pip install requests
     ```
+
 3. 使用你的Python IDE调试或者直接运行`.py`文件，按照控制台输出的提示输入相关信息即可完成下载。
    ![screenshot](https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228212228.png)
    下载的文件在同一目录下，名称为`stickers.zip`
-   
+
 ## 贴纸包ID的获取
 
 1. 进入[LINE STORE中文主页](https://store.line.me/home/zh-Hans "LINE STORE")
+
 2. 搜索你想要下载的贴纸包，进入详情页面
     ![screenshot](https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228205218.png)
     地址栏`product`与`zh-Hans`之间的数字（不带斜杠）即为**贴纸包ID**
