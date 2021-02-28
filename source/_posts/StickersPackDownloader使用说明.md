@@ -1,5 +1,5 @@
 ---
-title: StickerPackDownloader使用说明
+title: StickersPackDownloader使用说明
 date: 2021-02-28 19:54:33
 tags:
     - 作品
@@ -18,7 +18,7 @@ tags:
 
 1. 克隆该存储库。（或者直接下载zip格式文件）
    ``` bash
-   $ git clone https://github.com/mitian233/StickerPackDownloader.git
+   $ git clone https://github.com/mitian233/StickersPackDownloader.git
    ```
 2. 程序使用第三方库`requests`，需要后期安装。
     ``` bash
