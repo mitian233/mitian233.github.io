@@ -20,6 +20,49 @@
       </tags>
   </entry>
   <entry>
+    <title>StickerPackDownloader使用说明</title>
+    <url>/2021/02/28/StickerPackDownloader%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这是一个用来下载某聊天工具贴纸包的工具</p>
+<p>之前在GitHub上开源<a href="https://github.com/mitian233/StickersPackDownloader" title="项目主页">该项目</a>的时候是拿英文写的<a href="https://github.com/mitian233/StickersPackDownloader/blob/master/readme.md" title="GitHub">Readme</a>，毕竟我自己英语也比较蹩脚，干脆就乘此机会用中文重写一遍吧。</p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>用户在已安装Python环境的系统内</p>
+<ol>
+<li><p>克隆该存储库。（或者直接下载zip格式文件）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/mitian233/StickerPackDownloader.git</span><br></pre></td></tr></table></figure></li>
+<li><p>程序使用第三方库<code>requests</code>，需要后期安装。</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install requests</span><br></pre></td></tr></table></figure></li>
+<li><p>使用你的Python IDE调试或者直接运行<code>.py</code>文件，按照控制台输出的提示输入相关信息即可完成下载。<br><img src="https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228212228.png" alt="screenshot"><br>下载的文件在同一目录下，名称为<code>stickers.zip</code></p>
+<h2 id="贴纸包ID的获取"><a href="#贴纸包ID的获取" class="headerlink" title="贴纸包ID的获取"></a>贴纸包ID的获取</h2></li>
+<li><p>进入<a href="https://store.line.me/home/zh-Hans" title="LINE STORE">LINE STORE中文主页</a></p>
+</li>
+<li><p>搜索你想要下载的贴纸包，进入详情页面<br> <img src="https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228205218.png" alt="screenshot"><br> 地址栏<code>product</code>与<code>zh-Hans</code>之间的数字（不带斜杠）即为<strong>贴纸包ID</strong></p>
+<p> 例如该贴纸包详情页地址为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;store.line.me&#x2F;stickershop&#x2F;product&#x2F;9022&#x2F;zh-Hans</span><br></pre></td></tr></table></figure>
+<p> 则该贴纸包ID为<code>9022</code></p>
+</li>
+</ol>
+<h2 id="进阶使用"><a href="#进阶使用" class="headerlink" title="进阶使用"></a>进阶使用</h2><p>该Python脚本代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests <span class="comment">#导入requests库</span></span><br><span class="line"></span><br><span class="line">ua = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0&#x27;</span>&#125; <span class="comment">#伪装用户代理</span></span><br><span class="line"><span class="built_in">id</span> = <span class="built_in">input</span>(<span class="string">&quot;Input LINE stickers pack ID:&quot;</span>)  <span class="comment">#要求用户输入贴纸包ID</span></span><br><span class="line">url = (<span class="string">&quot;http://dl.stickershop.line.naver.jp/products/0/0/1/&quot;</span> + <span class="built_in">id</span> + <span class="string">&quot;/iphone/stickers@2x.zip&quot;</span>)  <span class="comment">#创建下载地址（已知格式）</span></span><br><span class="line"></span><br><span class="line">ans = <span class="built_in">input</span>(<span class="string">&quot;Download stickers pack on &quot;</span> + url + <span class="string">&quot; Sure? (Y/N):&quot;</span>)  <span class="comment">#和用户确认刚才创建的下载地址</span></span><br><span class="line"><span class="keyword">if</span> ans[-<span class="number">1</span>] <span class="keyword">in</span> [<span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;y&#x27;</span>]:</span><br><span class="line">    r = requests.get(url, headers=ua)</span><br><span class="line">    print(r.status_code)  <span class="comment">#确认状态码（200为正常，则保存文件成功）</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;stickers.zip&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f: <span class="comment"># 将获取到的二进制数据保存到同一目录下的stickers.zip中</span></span><br><span class="line">        f.write(r.content)</span><br><span class="line">    exit()</span><br><span class="line"><span class="keyword">elif</span> ans[-<span class="number">1</span>] <span class="keyword">in</span> [<span class="string">&#x27;N&#x27;</span>, <span class="string">&#x27;n&#x27;</span>]:</span><br><span class="line">    print(<span class="string">&quot;Process canceled. &quot;</span>)</span><br><span class="line">    exit()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&quot;Invalid input. &quot;</span>)</span><br><span class="line">    exit()</span><br><span class="line"><span class="comment"># End of file</span></span><br></pre></td></tr></table></figure>
+<p><em>其贴纸包文件的下载链接有已知规律，故不做复杂的爬虫。</em></p>
+<p>默认下载贴纸放大2倍。若想下载一倍的贴纸请将下载链接最后的<code>/stickers@2x.zip</code>改为<code>/stickers.zip</code>即可下载未经放大的版本。</p>
+<p>当然自行更改下载时创建的文件名称也是可以的，但压缩包格式必须是zip</p>
+<p><em>P.S.其实直接把代码复制下来就能跑了，很简单的脚本（</em></p>
+<h2 id="后期可能会添加进去的功能"><a href="#后期可能会添加进去的功能" class="headerlink" title="后期可能会添加进去的功能"></a>后期可能会添加进去的功能</h2><p><em>作者水平有限，只写了个二进制数据保存到文件的功能</em></p>
+<ul>
+<li>用户自行设置下载图像的倍率（Line商店提供一倍或二倍版本，目前默认下载两倍素材）</li>
+<li>按贴纸包标题命名下载完成的zip文件</li>
+<li>批量下载</li>
+</ul>
+<h2 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h2><p><strong>LINE STORE上所有的贴纸包版权均由作者所有，使用该脚本导致您受到版权纠纷，作者概不负责。</strong></p>
+<p><strong>该工具提供与用户免费使用，禁止用于任何商业用途。</strong></p>
+<p>如有任何问题都可以于项目页面向我提交issues <del>（改不改不一定，我是肯定会光明正大地咕了的）</del></p>
+<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><p>今天正好ガルパ六周年，祝生日快乐🎂（2021年2月28日）</p>
+]]></content>
+      <tags>
+        <tag>作品</tag>
+        <tag>文档</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/02/24/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -56,8 +99,8 @@
 </ol>
 ]]></content>
       <tags>
-        <tag>杂谈</tag>
         <tag>作品</tag>
+        <tag>杂谈</tag>
       </tags>
   </entry>
 </search>

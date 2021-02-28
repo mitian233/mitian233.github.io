@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StickerPackDownloader使用说明 - Aaki&#39;s Notes</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="简介这是一个用来下载某聊天工具贴纸包的工具
+之前在GitHub上开源该项目的时候是拿英文写的Readme，毕竟我自己英语也比较蹩脚，干脆就乘此机会用中文重写一遍吧。
+运行用户在已安装Python环境,"> 
+    <meta name="author" content="Harada Ayase"> 
+    <link rel="alternative" href="atom.xml" title="Aaki&#39;s Notes" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Aaki&#39;s Notes</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://mitian233.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">StickerPackDownloader使用说明</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">StickerPackDownloader使用说明</h1>
+        <div class="stuff">
+            <span>二月 28, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%96%87%E6%A1%A3/" rel="tag">文档</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这是一个用来下载某聊天工具贴纸包的工具</p>
+<p>之前在GitHub上开源<a target="_blank" rel="noopener" href="https://github.com/mitian233/StickersPackDownloader" title="项目主页">该项目</a>的时候是拿英文写的<a target="_blank" rel="noopener" href="https://github.com/mitian233/StickersPackDownloader/blob/master/readme.md" title="GitHub">Readme</a>，毕竟我自己英语也比较蹩脚，干脆就乘此机会用中文重写一遍吧。</p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>用户在已安装Python环境的系统内</p>
+<ol>
+<li><p>克隆该存储库。（或者直接下载zip格式文件）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/mitian233/StickerPackDownloader.git</span><br></pre></td></tr></table></figure></li>
+<li><p>程序使用第三方库<code>requests</code>，需要后期安装。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install requests</span><br></pre></td></tr></table></figure></li>
+<li><p>使用你的Python IDE调试或者直接运行<code>.py</code>文件，按照控制台输出的提示输入相关信息即可完成下载。<br><img src="https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228212228.png" alt="screenshot"><br>下载的文件在同一目录下，名称为<code>stickers.zip</code></p>
+<h2 id="贴纸包ID的获取"><a href="#贴纸包ID的获取" class="headerlink" title="贴纸包ID的获取"></a>贴纸包ID的获取</h2></li>
+<li><p>进入<a target="_blank" rel="noopener" href="https://store.line.me/home/zh-Hans" title="LINE STORE">LINE STORE中文主页</a></p>
+</li>
+<li><p>搜索你想要下载的贴纸包，进入详情页面<br> <img src="https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228205218.png" alt="screenshot"><br> 地址栏<code>product</code>与<code>zh-Hans</code>之间的数字（不带斜杠）即为<strong>贴纸包ID</strong></p>
+<p> 例如该贴纸包详情页地址为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;store.line.me&#x2F;stickershop&#x2F;product&#x2F;9022&#x2F;zh-Hans</span><br></pre></td></tr></table></figure>
+<p> 则该贴纸包ID为<code>9022</code></p>
+</li>
+</ol>
+<h2 id="进阶使用"><a href="#进阶使用" class="headerlink" title="进阶使用"></a>进阶使用</h2><p>该Python脚本代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests <span class="comment">#导入requests库</span></span><br><span class="line"></span><br><span class="line">ua = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0&#x27;</span>&#125; <span class="comment">#伪装用户代理</span></span><br><span class="line"><span class="built_in">id</span> = <span class="built_in">input</span>(<span class="string">&quot;Input LINE stickers pack ID:&quot;</span>)  <span class="comment">#要求用户输入贴纸包ID</span></span><br><span class="line">url = (<span class="string">&quot;http://dl.stickershop.line.naver.jp/products/0/0/1/&quot;</span> + <span class="built_in">id</span> + <span class="string">&quot;/iphone/stickers@2x.zip&quot;</span>)  <span class="comment">#创建下载地址（已知格式）</span></span><br><span class="line"></span><br><span class="line">ans = <span class="built_in">input</span>(<span class="string">&quot;Download stickers pack on &quot;</span> + url + <span class="string">&quot; Sure? (Y/N):&quot;</span>)  <span class="comment">#和用户确认刚才创建的下载地址</span></span><br><span class="line"><span class="keyword">if</span> ans[-<span class="number">1</span>] <span class="keyword">in</span> [<span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;y&#x27;</span>]:</span><br><span class="line">    r = requests.get(url, headers=ua)</span><br><span class="line">    print(r.status_code)  <span class="comment">#确认状态码（200为正常，则保存文件成功）</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;stickers.zip&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f: <span class="comment"># 将获取到的二进制数据保存到同一目录下的stickers.zip中</span></span><br><span class="line">        f.write(r.content)</span><br><span class="line">    exit()</span><br><span class="line"><span class="keyword">elif</span> ans[-<span class="number">1</span>] <span class="keyword">in</span> [<span class="string">&#x27;N&#x27;</span>, <span class="string">&#x27;n&#x27;</span>]:</span><br><span class="line">    print(<span class="string">&quot;Process canceled. &quot;</span>)</span><br><span class="line">    exit()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">&quot;Invalid input. &quot;</span>)</span><br><span class="line">    exit()</span><br><span class="line"><span class="comment"># End of file</span></span><br></pre></td></tr></table></figure>
+<p><em>其贴纸包文件的下载链接有已知规律，故不做复杂的爬虫。</em></p>
+<p>默认下载贴纸放大2倍。若想下载一倍的贴纸请将下载链接最后的<code>/stickers@2x.zip</code>改为<code>/stickers.zip</code>即可下载未经放大的版本。</p>
+<p>当然自行更改下载时创建的文件名称也是可以的，但压缩包格式必须是zip</p>
+<p><em>P.S.其实直接把代码复制下来就能跑了，很简单的脚本（</em></p>
+<h2 id="后期可能会添加进去的功能"><a href="#后期可能会添加进去的功能" class="headerlink" title="后期可能会添加进去的功能"></a>后期可能会添加进去的功能</h2><p><em>作者水平有限，只写了个二进制数据保存到文件的功能</em></p>
+<ul>
+<li>用户自行设置下载图像的倍率（Line商店提供一倍或二倍版本，目前默认下载两倍素材）</li>
+<li>按贴纸包标题命名下载完成的zip文件</li>
+<li>批量下载</li>
+</ul>
+<h2 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h2><p><strong>LINE STORE上所有的贴纸包版权均由作者所有，使用该脚本导致您受到版权纠纷，作者概不负责。</strong></p>
+<p><strong>该工具提供与用户免费使用，禁止用于任何商业用途。</strong></p>
+<p>如有任何问题都可以于项目页面向我提交issues <del>（改不改不一定，我是肯定会光明正大地咕了的）</del></p>
+<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><p>今天正好ガルパ六周年，祝生日快乐🎂（2021年2月28日）</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='b8bf73142affcec457b7'
+        data-cs='b99be501e394063eb5992422aeca3fe2a17bfacf'
+        data-r='GitalkDatabase'
+        data-o='mitian233'
+        data-a='mitian233'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'G-7HLFMGK0Q8', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+</html>
