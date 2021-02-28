@@ -27,11 +27,15 @@
 <h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>用户在已安装Python环境的系统内</p>
 <ol>
 <li><p>克隆该存储库。（或者直接下载zip格式文件）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/mitian233/StickersPackDownloader.git</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/mitian233/StickersPackDownloader.git</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>程序使用第三方库<code>requests</code>，需要后期安装。</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install requests</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install requests</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>使用你的Python IDE调试或者直接运行<code>.py</code>文件，按照控制台输出的提示输入相关信息即可完成下载。<br><img src="https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228212228.png" alt="screenshot"><br>下载的文件在同一目录下，名称为<code>stickers.zip</code></p>
-<h2 id="贴纸包ID的获取"><a href="#贴纸包ID的获取" class="headerlink" title="贴纸包ID的获取"></a>贴纸包ID的获取</h2></li>
+</li>
+</ol>
+<h2 id="贴纸包ID的获取"><a href="#贴纸包ID的获取" class="headerlink" title="贴纸包ID的获取"></a>贴纸包ID的获取</h2><ol>
 <li><p>进入<a href="https://store.line.me/home/zh-Hans" title="LINE STORE">LINE STORE中文主页</a></p>
 </li>
 <li><p>搜索你想要下载的贴纸包，进入详情页面<br> <img src="https://raw.githubusercontent.com/mitian233/ImagesService/master/20210228205218.png" alt="screenshot"><br> 地址栏<code>product</code>与<code>zh-Hans</code>之间的数字（不带斜杠）即为<strong>贴纸包ID</strong></p>
