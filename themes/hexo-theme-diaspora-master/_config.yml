@@ -87,7 +87,7 @@ gitalk:
 keywords: Fechin
 
 # 要使用google_analytics进行统计的话，这里需要配置ID
-google_analytics: UA-190584506-1
+google_analytics: G-7HLFMGK0Q8
 
 # 网站ico
 favicon: /img/favicon.png
