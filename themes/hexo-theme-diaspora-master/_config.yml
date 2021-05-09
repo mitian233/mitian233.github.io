@@ -45,10 +45,8 @@ hitokoto: true
 
 # 链接(可选:facebook,twitter,github,wechat,email)
 links:
-    facebook: /
     twitter: https://twitter.com/9_bishi
     github: https://github.com/mitian233
-    wechat: /img/logo.png
     email: mailto:mitian233@gmail.com
   
 # 备案
