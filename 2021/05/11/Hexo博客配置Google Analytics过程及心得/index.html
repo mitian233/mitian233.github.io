@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo博客配置Google Analytics过程及心得 - Aaki&#39;s Notes</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="实际上，不论Hexo博客使用的主题是否支持，都可以通过向主题的head.ejs内添加代码的方式使生成的网站支持Google Analytics（以下简称GA）。
+Hexo作为一个无服务器的博客系统（,"> 
+    <meta name="author" content="Harada Ayase"> 
+    <link rel="alternative" href="atom.xml" title="Aaki&#39;s Notes" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script data-ad-client="ca-pub-9004116390026603" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Aaki&#39;s Notes</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://mitian233.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Hexo博客配置Google Analytics过程及心得</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Hexo博客配置Google Analytics过程及心得</h1>
+        <div class="stuff">
+            <span>五月 11, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%97%A5%E5%BF%97/" rel="tag">日志</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>实际上，不论Hexo博客使用的主题是否支持，都可以通过向主题的<code>head.ejs</code>内添加代码的方式使生成的网站支持Google Analytics（以下简称GA）。</p>
+<p>Hexo作为一个无服务器的博客系统（实际上算不上是系统，只是一个静态网站生成器），生成网站页面时是按照指定主题的相应文件内容拼接生成网站，<br>而这些布局元素（<code>.ejs</code>）一般存放在主题文件夹下的layout文件夹内。所以，只要向相应的文件添加指定的内容即可向页面添加相应功能。</p>
+<p>这里记录了博主使用Hexo主题Diaspora时对博客使用GA时遇到的问题和解决方案。</p>
+<h2 id="初次尝试GA"><a href="#初次尝试GA" class="headerlink" title="初次尝试GA"></a>初次尝试GA</h2><p>刚刚换新博客主题时，Diaspora在它的<code>_config.yml</code>里提供了GA衡量ID（有时称为跟踪ID，取决于你目前使用的GA版本是GA4还是GA3）的填写位， 我将自己的衡量ID填写进去后发现，GA管理后台并不能正常收到访问数据。</p>
+<p>博客使用错误配置运行了三个月，直到上手试用了GA发现其强大之处于是决定着手解决这个问题。</p>
+<p>进入主题目录的<code>layout/_partial</code>内，我发现了主题所自带的<code>google-analytics.ejs</code>文件，显然就是GA的页面代码了，打开发现如下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Google Analytics--&gt;</span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i,s,o,g,r,a,m</span>)</span>&#123;i[<span class="string">&#x27;GoogleAnalyticsObject&#x27;</span>]=r;i[r]=i[r]||<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  (i[r].q=i[r].q||[]).push(<span class="built_in">arguments</span>)&#125;,i[r].l=<span class="number">1</span>*<span class="keyword">new</span> <span class="built_in">Date</span>();a=s.createElement(o),</span><br><span class="line">  m=s.getElementsByTagName(o)[<span class="number">0</span>];a.async=<span class="number">1</span>;a.src=g;m.parentNode.insertBefore(a,m)</span><br><span class="line">  &#125;)(<span class="built_in">window</span>,<span class="built_in">document</span>,<span class="string">&#x27;script&#x27;</span>,<span class="string">&#x27;https://www.google-analytics.com/analytics.js&#x27;</span>,<span class="string">&#x27;ga&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  ga(<span class="string">&#x27;create&#x27;</span>, <span class="string">&#x27;&lt;%= theme.google_analytics %&gt;&#x27;</span>, <span class="string">&#x27;auto&#x27;</span>);</span><br><span class="line">  ga(<span class="string">&#x27;send&#x27;</span>, <span class="string">&#x27;pageview&#x27;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行<code>hexo g</code>后生成的页面按下F12可找到如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Google Analytics--&gt;</span><br><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i,s,o,g,r,a,m</span>)</span>&#123;i[<span class="string">&#x27;GoogleAnalyticsObject&#x27;</span>]=r;i[r]=i[r]||<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  (i[r].q=i[r].q||[]).push(<span class="built_in">arguments</span>)&#125;,i[r].l=<span class="number">1</span>*<span class="keyword">new</span> <span class="built_in">Date</span>();a=s.createElement(o),</span><br><span class="line">  m=s.getElementsByTagName(o)[<span class="number">0</span>];a.async=<span class="number">1</span>;a.src=g;m.parentNode.insertBefore(a,m)</span><br><span class="line">  &#125;)(<span class="built_in">window</span>,<span class="built_in">document</span>,<span class="string">&#x27;script&#x27;</span>,<span class="string">&#x27;https://www.google-analytics.com/analytics.js&#x27;</span>,<span class="string">&#x27;ga&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  ga(<span class="string">&#x27;create&#x27;</span>, <span class="string">&#x27;这儿是你在配置文件中填写的衡量ID&#x27;</span>, <span class="string">&#x27;auto&#x27;</span>);</span><br><span class="line">  ga(<span class="string">&#x27;send&#x27;</span>, <span class="string">&#x27;pageview&#x27;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>因为谷歌升级了GA4，后期创建的统计媒体资源将统一启用新的<code>gtag.js</code>来统计数据，虽然旧版本<code>analytics.js</code>从官方文档描述来看貌似依旧可用（<a target="_blank" rel="noopener" href="https://developers.google.com/analytics/devguides/collection/gtagjs/migration?hl=zh-cn">参看文档</a>） ，但未知原因GA后台无法正常统计到数据，那就乘此机会升级到新的页面代码吧。</p>
+<h2 id="使用gtag-js"><a href="#使用gtag-js" class="headerlink" title="使用gtag.js"></a>使用gtag.js</h2><p>将<code>google-analytics.ejs</code>内部分内容替换成以下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;</span><br><span class="line">  &lt;script <span class="keyword">async</span> src=<span class="string">&quot;https://www.googletagmanager.com/gtag/js?id=&lt;%= theme.google_analytics %&gt;&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">window</span>.dataLayer = <span class="built_in">window</span>.dataLayer || [];</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">gtag</span>(<span class="params"></span>)</span>&#123;dataLayer.push(<span class="built_in">arguments</span>);&#125;</span><br><span class="line">  gtag(<span class="string">&#x27;js&#x27;</span>, <span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line"></span><br><span class="line">  gtag(<span class="string">&#x27;config&#x27;</span>, <span class="string">&#x27;&lt;%= theme.google_analytics %&gt;&#x27;</span>);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End Google Analytics --&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em>注：<code>&lt;%= theme.google_analytics %&gt;</code>是Hexo主题的全局变量，当然你也可以将其直接替换成自己的GA衡量ID（不过主题配置文件内的变量将不再可用）。</em></p>
+<p>生成并部署到GitHub Pages后再次访问静态博客，可以看到GA后台已经能够显示数据了。</p>
+<h2 id="如果你使用的主题不是Diaspora"><a href="#如果你使用的主题不是Diaspora" class="headerlink" title="如果你使用的主题不是Diaspora"></a>如果你使用的主题不是Diaspora</h2><ol>
+<li>如果主题不支持GA，则直接添加<code>gtag.js</code>页面代码到<code>head.ejs</code>内</li>
+<li>如果主题支持GA但GA后台无法收到统计信息，尝试升级旧版页面代码或许有助于解决问题，访问该页面了解<a target="_blank" rel="noopener" href="https://developers.google.com/analytics/devguides/collection/gtagjs/migration?hl=zh-cn">如何从analytics.js迁移到gtag.js</a></li>
+</ol>
+<p>文章未完……</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://raw.githubusercontent.com/mitian233/ImagesService/master/1.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='b8bf73142affcec457b7'
+        data-cs='b99be501e394063eb5992422aeca3fe2a17bfacf'
+        data-r='GitalkDatabase'
+        data-o='mitian233'
+        data-a='mitian233'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Google Analytics
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'G-7HLFMGK0Q8', 'auto');
+  ga('send', 'pageview');-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HLFMGK0Q8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7HLFMGK0Q8');
+</script>
+<!-- End Google Analytics -->
+
+
+</html>
